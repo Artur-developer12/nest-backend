@@ -1,5 +1,7 @@
 import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
+import { Role } from 'src/roles/roles.model';
+import { UserRoles } from 'src/roles/user-roles-model';
 import { UsersController } from './users.controller';
 import { Users } from './users.model';
 import { UsersService } from './users.service';
@@ -7,6 +9,6 @@ import { UsersService } from './users.service';
 @Module({
   controllers: [UsersController],
   providers: [UsersService],
-  imports: [SequelizeModule.forFeature([Users])],
+  imports: [SequelizeModule.forFeature([Users, Role, UserRoles])],
 })
 export class UsersModule {}
