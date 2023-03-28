@@ -9,13 +9,13 @@ import {
 import { Users } from 'src/users/users.model';
 import { UserRoles } from './user-roles-model';
 
-interface UserCreationAttrs {
+interface RolesCreationAttrs {
   value: string;
   description: string;
 }
 
 @Table({ tableName: 'roles' })
-export class Role extends Model<Role, UserCreationAttrs> {
+export class Role extends Model<Role, RolesCreationAttrs> {
   @ApiProperty({ example: 1, description: 'Уникальный id' })
   @Column({
     type: DataType.INTEGER,
@@ -23,16 +23,15 @@ export class Role extends Model<Role, UserCreationAttrs> {
     autoIncrement: true,
     primaryKey: true,
   })
-  id: number;
+  id: string;
   @ApiProperty({
     example: 'Admin',
     description: 'Уникальное Значение роли пользователя',
   })
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.STRING,
     unique: true,
-    autoIncrement: true,
-    primaryKey: true,
+    allowNull: false,
   })
   value: string;
   @ApiProperty({ example: 'Администратор', description: 'Описание роли' })
