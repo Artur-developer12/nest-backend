@@ -16,7 +16,7 @@ interface UserCreationAttrs {
 
 @Table({ tableName: 'users', modelName: 'UsersTable' })
 export class UserModel extends Model<UserModel, UserCreationAttrs> {
-  @ApiProperty({ example: 1, description: 'Уникальный id' })
+  @ApiProperty({ example: 1, description: 'unique id' })
   @Column({
     type: DataType.INTEGER,
     unique: true,
@@ -42,7 +42,7 @@ export class UserModel extends Model<UserModel, UserCreationAttrs> {
     type: DataType.BOOLEAN,
     defaultValue: false,
   })
-  banned: string;
+  banned: boolean;
   @ApiProperty({ example: 'За хулиганство', description: 'Причина бана' })
   @Column({
     type: DataType.STRING,
